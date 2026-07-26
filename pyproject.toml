@@ -1,0 +1,32 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "aep-sdk"
+# Single source of truth: aep_sdk/__init__.py __version__ (read via dynamic).
+dynamic = ["version"]
+description = "AEP 0.1 SDK: emit/consume/control helpers over the schema-generated envelope and payload types"
+readme = "README.md"
+license = "Apache-2.0"
+license-files = ["LICENSE", "NOTICE"]
+requires-python = ">=3.10"
+dependencies = ["pydantic>=2"]
+keywords = ["aep", "agent-events", "observability", "sdk"]
+classifiers = [
+    # Blocks accidental upload; removed at first real release.
+    "Private :: Do Not Upload",
+]
+
+[project.urls]
+Homepage = "https://github.com/agenteventprotocol/python-sdk"
+Repository = "https://github.com/agenteventprotocol/python-sdk"
+Issues = "https://github.com/agenteventprotocol/python-sdk/issues"
+
+[tool.hatch.version]
+path = "aep_sdk/__init__.py"
+
+[tool.hatch.build.targets.wheel]
+packages = ["aep_sdk"]
+# PEP 561: ship the py.typed marker so type checkers treat the package as typed.
+artifacts = ["aep_sdk/py.typed"]

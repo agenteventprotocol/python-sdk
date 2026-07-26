@@ -1,0 +1,12 @@
+# Automated dependency updates. The package's one runtime dependency
+# (pydantic, declared as a floor) has no lockfile, and test environments are
+# resolved fresh by uv, so only the GitHub Actions used by CI are tracked.
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      actions:
+        patterns: ["*"]

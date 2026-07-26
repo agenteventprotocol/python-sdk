@@ -1,0 +1,75 @@
+# aep-sdk CI — smoke (pydantic env via uv, live path against the vendored
+# relay fixture), a typing job proving the wheel ships usable types
+# (py.typed), and a regen-diff job that regenerates aep_sdk/gen/ from the
+# spec repo pinned in SPEC_VERSION and fails on any drift.
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+# Least privilege: nothing here writes to the repository.
+permissions:
+  contents: read
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+
+      - uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6.4.0
+        with:
+          node-version: 22
+          # Toolchain: Node 22 (relay fixture), uv 0.11.x
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@11f9893b081a58869d3b5fccaea48c9e9e46f990 # v8.3.2
+        with:
+          version: 0.11.x
+
+      - name: Smoke (envelope + control machine + live HTTP→SSE)
+        run: bash tests/run-smoke.sh
+
+  typing:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@11f9893b081a58869d3b5fccaea48c9e9e46f990 # v8.3.2
+        with:
+          version: 0.11.x
+
+      - name: Build wheel
+        run: uv build
+
+      - name: Fresh-venv wheel install + pyright on a typed consumer
+        run: |
+          uv venv .venv
+          uv pip install --python .venv dist/aep_sdk-*.whl pyright
+          .venv/bin/pyright tests/typing/consumer.py
+
+  regen-diff:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+
+      - name: Clone the spec repo at the pinned ref (SPEC_VERSION)
+        run: |
+          git clone https://github.com/agenteventprotocol/agent-event-protocol.git spec-repo
+          git -C spec-repo checkout "$(cat SPEC_VERSION)"
+
+      - name: Regenerate models from the pinned schema registry
+        run: |
+          python3 spec-repo/schemas/codegen/generate.py
+          cp spec-repo/schemas/gen/python/aep_types.py aep_sdk/gen/aep_types.py
+
+      - name: Committed aep_sdk/gen/ must match the pinned spec exactly
+        run: |
+          rm -rf spec-repo
+          git diff --exit-code -- aep_sdk/gen/

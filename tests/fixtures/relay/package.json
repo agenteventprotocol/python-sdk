@@ -1,0 +1,8 @@
+{
+  "name": "aep-relay-fixture",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Vendored snapshot of the AEP reference relay, used only by tests/run-smoke.sh",
+  "license": "Apache-2.0",
+  "dependencies": { "ws": "^8.18.0" }
+}

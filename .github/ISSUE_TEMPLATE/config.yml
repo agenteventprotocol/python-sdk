@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Specification question
+    url: https://github.com/agenteventprotocol/agent-event-protocol/issues/new/choose
+    about: Questions about normative spec text belong on the standard repository.
