@@ -13,10 +13,6 @@ license-files = ["LICENSE", "NOTICE"]
 requires-python = ">=3.10"
 dependencies = ["pydantic>=2"]
 keywords = ["aep", "agent-events", "observability", "sdk"]
-classifiers = [
-    # Blocks accidental upload; removed at first real release.
-    "Private :: Do Not Upload",
-]
 
 [project.urls]
 Homepage = "https://github.com/agenteventprotocol/python-sdk"

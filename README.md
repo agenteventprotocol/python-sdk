@@ -20,9 +20,13 @@ PEP 561).
 
 The distribution name is `agenteventprotocol-sdk`; the import name is `aep_sdk`.
 
-**Unpublished — build from the repo.** The package is not on PyPI yet (the
-`Private :: Do Not Upload` classifier stays until the protocol's `v0.1` tag);
-until then:
+```sh
+pip install --pre agenteventprotocol-sdk
+```
+
+The published version is the `0.1.0.dev0` pre-release, so `--pre` (or an
+exact pin) opts in; the `0.1.0` final follows the protocol's `v0.1` tag. To
+work from a clone instead:
 
 ```sh
 git clone https://github.com/agenteventprotocol/python-sdk.git
