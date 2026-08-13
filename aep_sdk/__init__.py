@@ -15,4 +15,4 @@ from .projection import StateProjection, project_state  # noqa: F401
 from . import aio  # noqa: F401 — asyncio consumer (aio.subscribe / aio.AsyncSubscription)
 from . import testing  # noqa: F401 — exported test doubles (testing.MemorySink / ScriptedSource / ControlStub)
 
-__version__ = "0.1.0.dev0"
+__version__ = "0.1.0.dev1"

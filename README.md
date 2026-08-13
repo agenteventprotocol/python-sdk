@@ -24,7 +24,7 @@ The distribution name is `agenteventprotocol-sdk`; the import name is `aep_sdk`.
 pip install --pre agenteventprotocol-sdk
 ```
 
-The published version is the `0.1.0.dev0` pre-release, so `--pre` (or an
+The published version is the `0.1.0.dev1` pre-release, so `--pre` (or an
 exact pin) opts in; the `0.1.0` final follows the protocol's `v0.1` tag. To
 work from a clone instead:
 
