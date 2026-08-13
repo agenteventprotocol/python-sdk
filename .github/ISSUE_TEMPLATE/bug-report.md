@@ -1,6 +1,6 @@
 ---
 name: Bug report
-about: Report a bug in aep-sdk
+about: Report a bug in agenteventprotocol
 title: "[BUG] "
 labels: bug
 assignees: ''
@@ -44,7 +44,7 @@ What actually happens? Include relevant output or logs (redact tokens and paths)
 
 ## Version and commit
 
-- `aep-sdk` version or commit:
+- `agenteventprotocol` version or commit:
 - `SPEC_VERSION` (repo root file):
 - Python version:
 

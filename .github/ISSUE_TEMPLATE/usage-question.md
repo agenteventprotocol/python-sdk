@@ -1,6 +1,6 @@
 ---
 name: Usage question
-about: How to emit, consume, or control with aep-sdk
+about: How to emit, consume, or control with agenteventprotocol
 title: "[QUESTION] "
 labels: question
 assignees: ''

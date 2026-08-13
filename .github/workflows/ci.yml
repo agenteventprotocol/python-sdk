@@ -1,4 +1,4 @@
-# aep-sdk CI — smoke (pydantic env via uv, live path against the vendored
+# agenteventprotocol CI — smoke (pydantic env via uv, live path against the vendored
 # relay fixture), a typing job proving the wheel ships usable types
 # (py.typed), and a regen-diff job that regenerates aep_sdk/gen/ from the
 # spec repo pinned in SPEC_VERSION and fails on any drift.

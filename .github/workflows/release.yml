@@ -1,4 +1,4 @@
-# Release — tag-triggered publish of aep-sdk to PyPI via trusted publishing
+# Release — tag-triggered publish of agenteventprotocol to PyPI via trusted publishing
 # (OIDC; no long-lived token secret). Dormant until a `v*` tag exists;
 # tagging is a maintainer action (RELEASING.md). The guards make a stray tag
 # safe: the tag must equal `__version__` exactly, and a package still

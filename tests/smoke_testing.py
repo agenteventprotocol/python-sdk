@@ -1,4 +1,4 @@
-"""aep-sdk smoke: the exported testing utilities (MemorySink / ScriptedSource /
+"""agenteventprotocol smoke: the exported testing utilities (MemorySink / ScriptedSource /
 ControlStub) and the state projection (StateProjection / project_state) over
 the golden corpus in tests/fixtures/projection/. Relay-free by design: runs
 without AEP_RELAY. Run via tests/run-smoke.sh."""

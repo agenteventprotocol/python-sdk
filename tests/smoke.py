@@ -1,4 +1,4 @@
-"""aep-sdk smoke: pydantic validation of built envelopes, the control state
+"""agenteventprotocol smoke: pydantic validation of built envelopes, the control state
 machine (ack / nack / dedupe-on-retry / window timeout), and — when AEP_RELAY
 is set — live emit-over-HTTP + consume-over-SSE against the reference relay,
 plus the sync WS control surface (open_duplex / Duplex / ControlClient)
@@ -37,7 +37,7 @@ def check(name: str, ok: bool) -> None:
 built: list[dict] = []
 em = Emitter("py-agent", "smoke-host", built.append, epoch=1)
 s = em.session("s_py_1")
-s.emit("session.started", {"client": {"name": "aep-sdk-smoke"}})
+s.emit("session.started", {"client": {"name": "agenteventprotocol-smoke"}})
 s.emit("tool.completed",
        {"tool": {"name": "Bash", "call_id": "t_1"}, "status": "success", "duration_ms": 12},
        subject="Bash", run="r_1")
@@ -230,7 +230,7 @@ if relay:
     sub = subscribe(relay, got.append, filter={"session": session_id}, token=token)
     time.sleep(0.5)
     live = Emitter("py-agent", "smoke-host", http_sink(relay, token), epoch=1).session(session_id)
-    live.emit("session.started", {"client": {"name": "aep-sdk-smoke"}})
+    live.emit("session.started", {"client": {"name": "agenteventprotocol-smoke"}})
     live.emit("session.ended", {"reason": "normal"})
     deadline = time.monotonic() + 5
     while time.monotonic() < deadline and len(got) < 2:
