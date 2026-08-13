@@ -50,7 +50,7 @@ jobs:
       - name: Fresh-venv wheel install + pyright on a typed consumer
         run: |
           uv venv .venv
-          uv pip install --python .venv dist/agenteventprotocol-*.whl pyright
+          uv pip install --python .venv dist/agenteventprotocol_sdk-*.whl pyright
           .venv/bin/pyright tests/typing/consumer.py
 
   regen-diff:

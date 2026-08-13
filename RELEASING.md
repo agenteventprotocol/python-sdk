@@ -1,6 +1,6 @@
 # Releasing
 
-How `agenteventprotocol` ships to PyPI. The versioning **policy** is the
+How `agenteventprotocol-sdk` ships to PyPI. The versioning **policy** is the
 organization's canonical
 [VERSIONING.md](https://github.com/agenteventprotocol/agent-event-protocol/blob/main/VERSIONING.md)
 in the protocol repository: the package versions independently under
@@ -12,7 +12,7 @@ applies the policy to this package.
 
 ## Versioning policy
 
-`agenteventprotocol` follows [SemVer 2.0.0](https://semver.org/). This is the
+`agenteventprotocol-sdk` follows [SemVer 2.0.0](https://semver.org/). This is the
 package-track instance of the canonical org-wide policy — see the
 [protocol repository's `VERSIONING.md`](https://github.com/agenteventprotocol/agent-event-protocol/blob/main/VERSIONING.md)
 for the full cross-repository rules; what follows is how that policy applies
@@ -110,7 +110,7 @@ stray tag safe:
 4. **Tag and push the tag.**
 
    ```sh
-   git tag -a v0.1.0 -m "agenteventprotocol 0.1.0"
+   git tag -a v0.1.0 -m "agenteventprotocol-sdk 0.1.0"
    git push origin v0.1.0
    ```
 
@@ -121,6 +121,6 @@ stray tag safe:
 
 - Create the PyPI project's
   [trusted publisher](https://docs.pypi.org/trusted-publishers/) for
-  `agenteventprotocol`: owner `agenteventprotocol`, repository `python-sdk`, workflow
+  `agenteventprotocol-sdk`: owner `agenteventprotocol`, repository `python-sdk`, workflow
   `release.yml` (no environment). Until that exists, the publish step is
   rejected by PyPI even on a valid tag.

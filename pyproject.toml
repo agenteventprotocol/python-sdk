@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "agenteventprotocol"
+name = "agenteventprotocol-sdk"
 # Single source of truth: aep_sdk/__init__.py __version__ (read via dynamic).
 dynamic = ["version"]
 description = "AEP 0.1 SDK: emit/consume/control helpers over the schema-generated envelope and payload types"

@@ -1,4 +1,4 @@
-# `agenteventprotocol`: the official AEP Python SDK
+# `agenteventprotocol-sdk`: the official AEP Python SDK
 
 **Typed emit/consume/control helpers for the
 [Agent Event Protocol](https://github.com/agenteventprotocol/agent-event-protocol), built
@@ -18,7 +18,7 @@ PEP 561).
 
 ## Install
 
-The distribution name is `agenteventprotocol`; the import name is `aep_sdk`.
+The distribution name is `agenteventprotocol-sdk`; the import name is `aep_sdk`.
 
 **Unpublished — build from the repo.** The package is not on PyPI yet (the
 `Private :: Do Not Upload` classifier stays until the protocol's `v0.1` tag);
@@ -28,7 +28,7 @@ until then:
 git clone https://github.com/agenteventprotocol/python-sdk.git
 cd python-sdk
 uv build                      # sdist + wheel via hatchling
-uv pip install dist/agenteventprotocol-*.whl
+uv pip install dist/agenteventprotocol_sdk-*.whl
 ```
 
 ## Quickstart

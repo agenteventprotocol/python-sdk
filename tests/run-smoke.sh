@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# agenteventprotocol smoke: pydantic env via uv; the vendored relay fixture provides the
+# agenteventprotocol-sdk smoke: pydantic env via uv; the vendored relay fixture provides the
 # live emit-over-HTTP / consume-over-SSE path. Requires uv and Node >= 22
 # (the fixture is the reference relay, which is a Node program).
 set -euo pipefail

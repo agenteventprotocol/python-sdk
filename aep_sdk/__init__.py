@@ -1,4 +1,4 @@
-"""agenteventprotocol — AEP 0.1 helpers over the generated envelope + payload types.
+"""agenteventprotocol-sdk — AEP 0.1 helpers over the generated envelope + payload types.
 
 Types are generated from the protocol's schema registry (AEP-0002) into
 ``aep_sdk.gen``; everything handwritten lives in the emit/consume/control

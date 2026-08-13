@@ -1,4 +1,4 @@
-"""agenteventprotocol asyncio smoke: the aio consumer against the same vendored relay
+"""agenteventprotocol-sdk asyncio smoke: the aio consumer against the same vendored relay
 fixture the sync smoke uses — live order, resume without gap or duplicate,
 capture down-level honored, clean close — plus the async ControlClient
 against an in-process scripted target (accept with a forced same-id
@@ -52,7 +52,7 @@ async def main() -> None:
     sid = f"s_aio_live_{ulid()[-6:].lower()}"
     sub = await aio.subscribe(RELAY, filter={"session": sid}, token=TOKEN)
     em = Emitter("py-agent", "smoke-host", http_sink(RELAY, TOKEN), epoch=1).session(sid)
-    em.emit("session.started", {"client": {"name": "agenteventprotocol-smoke-aio"}})
+    em.emit("session.started", {"client": {"name": "agenteventprotocol-sdk-smoke-aio"}})
     em.emit("tool.completed",
             {"tool": {"name": "Bash", "call_id": "t_1"}, "status": "success", "duration_ms": 7})
     em.emit("session.ended", {"reason": "normal"})
@@ -82,7 +82,7 @@ async def main() -> None:
     # ---- resume: replay strictly after a stored position, no gap, no dupe -------
     sid2 = f"s_aio_res_{ulid()[-6:].lower()}"
     em2 = Emitter("py-agent", "smoke-host", http_sink(RELAY, TOKEN), epoch=1).session(sid2)
-    em2.emit("session.started", {"client": {"name": "agenteventprotocol-smoke-aio"}})
+    em2.emit("session.started", {"client": {"name": "agenteventprotocol-sdk-smoke-aio"}})
     for i in range(3):
         em2.emit("tool.completed",
                  {"tool": {"name": "Bash", "call_id": f"t_{i}"}, "status": "success",
@@ -99,7 +99,7 @@ async def main() -> None:
     # ---- capture: down-level honored by the relay on this subscription ----------
     sid3 = f"s_aio_cap_{ulid()[-6:].lower()}"
     em3 = Emitter("py-agent", "smoke-host", http_sink(RELAY, TOKEN), epoch=1, capture="redacted").session(sid3)
-    em3.emit("session.started", {"client": {"name": "agenteventprotocol-smoke-aio"}})
+    em3.emit("session.started", {"client": {"name": "agenteventprotocol-sdk-smoke-aio"}})
     sub3 = await aio.subscribe(RELAY, filter={"session": sid3}, capture="metadata", live=False, token=TOKEN)
     caught = [ev async for ev in sub3]
     check("capture param down-levels delivered events",
