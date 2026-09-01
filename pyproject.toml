@@ -13,6 +13,7 @@ license-files = ["LICENSE", "NOTICE"]
 requires-python = ">=3.10"
 dependencies = ["pydantic>=2"]
 keywords = ["aep", "agent-events", "observability", "sdk"]
+authors = [{ name = "Agent Event Protocol maintainers", email = "dev@agenteventprotocol.io" }]
 
 [project.urls]
 Homepage = "https://github.com/agenteventprotocol/python-sdk"
